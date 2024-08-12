@@ -12,41 +12,13 @@ class RagcyClient {
       this.baseUrl = 'https://api.ragcy.com';
     }
 
-    // makeRequest(method, endpoint, data = null) {
-    //     return new Promise(async (resolve, reject) => {
-    //         const url = `${this.baseUrl}${endpoint}`;
-    //         const headers = {
-    //           'Authorization': `Bearer ${this.apiKey}`,
-    //           'Content-Type': 'application/json'
-    //         };
-      
-    //         const options = {
-    //           method,
-    //           headers,
-    //           body: data ? JSON.stringify(data) : undefined
-    //         };
-        
-    //         const response = await fetch(url, options);
-    //         if (!response.ok) {
-    //           reject(`HTTP error! status: ${response.status}`);
-    //         }
-      
-    //        data = await response.json();
-    //        if (data && !!data.success) {
-    //           resolve(data);
-    //        } else {
-    //           reject(!!data.error ? data.error : 'Something was wrong!');
-    //        }
-    //     });
-    // }
-
     async makeRequest(method, endpoint, data = null, isFile = false) {
       const url = `${this.baseUrl}${endpoint}`;
       const headers = {
         'authorization': `Bearer ${this.apiKey}`,
         'Content-Type': !isFile ? 'application/json' : 'multipart/form-data'
       };
-    
+
       const config = {
         method: method.toLowerCase(),
         url,
