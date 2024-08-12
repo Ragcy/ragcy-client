@@ -46,8 +46,6 @@ class RagcyClient {
         'authorization': `Bearer ${this.apiKey}`,
         'Content-Type': !isFile ? 'application/json' : 'multipart/form-data'
       };
-
-      console.log('headers', headers)
     
       const config = {
         method: method.toLowerCase(),
@@ -55,7 +53,7 @@ class RagcyClient {
         headers,
         data: data ? (!isFile ? JSON.stringify(data) : data) : undefined
       };
-    console.log('config', config)
+
       try {
         let response = null;
         if (!isFile) {
@@ -226,10 +224,11 @@ class RagcyClient {
         /**
      * Retrieves a list of requests for a specific session.
      * @param {string} sessionId - The ID of the session to get requests for.
+     * @param {'desc' | 'asc'} order - The ID of the session to get requests for.
      * @returns {Promise<Array>} An array of requests objects.
      */
-        async requestList(sessionId) {
-          return this.makeRequest('GET', `/requests/session/${sessionId}`);
+      async requestList(sessionId, order = 'asc') {
+          return this.makeRequest('GET', `/requests/session/${sessionId}?order=${order}`);
       }
 
 
