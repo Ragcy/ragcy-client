@@ -3,7 +3,7 @@ const path = require('path');
 const FormData = require('form-data');
 const axios = require('axios');
 
-allowedExtensions = ['json', 'xls', 'xlsx', 'mkv', 'mp4', 'mp3', 'wav', 'pdf', 'txt', 'csv', 'docx', 'doc'];
+allowedExtensions = ['json', 'xls', 'xlsx', 'mkv', 'mp4', 'mp3', 'wav', 'pdf', 'txt', 'csv', 'docx', 'doc', 'html'];
 
 class RagcyClient {
 
